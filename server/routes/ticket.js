@@ -36,6 +36,17 @@ module.exports.listen = function(app,conn,multer){
         })
     })
 
+    app.post('/ticket/getAllFreedomTickets',(req,res)=>{
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from ticket where type = '${req.body.type}'`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                res.send(result)
+            }
+        })
+    })
+
     //img = '10.40.153.145:8888/${src}' 
     // app.post('/ticket/updateTicket',upload.any(),(req,res)=>{
     //     res.append("Access-Control-Allow-Origin","*");

@@ -14,6 +14,13 @@ data:{}
 
 return Value:[{}]   || 'err'
 
+### 获取自由行或者跟团游所有ticket
+url:http://10.40.153.145:8888/ticket/getAllFreedomTickets
+
+data:{type:'自由行'||'跟团游'}
+
+return Value:[{}]   || 'err'
+
 
 ### 通过id查找ticket
 url:http://10.40.153.145:8888/ticket/getTicketById
