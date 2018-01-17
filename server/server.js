@@ -17,7 +17,9 @@ var conn = mysql.createConnection({
 });
 
 var ticket = require('./routes/ticket');
+var user = require('./routes/user.js')
 ticket.listen(app,conn,multer);
+user.listen(app,conn);
 
 app.listen(8888);
 console.log('start server');

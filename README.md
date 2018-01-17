@@ -8,7 +8,7 @@ url:http://10.40.153.145:8888/
 # ticket篇
 
 ## 获取所有ticket
-url:/ticket/getAllTickets
+url:http://10.40.153.145:8888/ticket/getAllTickets
 
 data:{}
 
@@ -16,23 +16,38 @@ return Value:[{}]   || 'err'
 
 
 ## 通过id查找ticket
-url:/ticket/getTicketById
+url:http://10.40.153.145:8888/ticket/getTicketById
 
-data:{id}
+data:{id:int}
 
 return Value:{}   || 'err'
 
+# user篇
 
-## 通过id修改ticket (只能更新title，price,time)
-url:/ticket/updateTicket
+## 个人用户登录
+url:http://10.40.153.145:8888/login/userp
 
-data:{id,title,price,time}
+data:{phone:string,password:string}
 
 return Value:'success'   || 'err'
 
-## 新增ticket (包含图片像上传)
-url:/ticket/addTicket
+## 企业以及公司用户登录
+url:http://10.40.153.145:8888/login/usercs
 
-data:{title,price,time}
+data:{phone:string,password:string}
+
+return Value:'success'   || 'err'
+
+## 个人用户注册
+url:http://10.40.153.145:8888/register/userp
+
+data:{phone:string,password:string}
+
+return Value:'success'   || 'err'
+
+## 企业用户注册
+url:http://10.40.153.145:8888/register/usercs
+
+data:{phone:string,password:string,name:string}
 
 return Value:'success'   || 'err'
