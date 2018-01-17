@@ -1,4 +1,4 @@
-                    <template>
+<template>
 <div class="login">
    <span>
       <h4>会员登录</h4>
@@ -56,9 +56,9 @@ body{background-image:url("../../image/back.jpg");background-repeat:no-repeat;ba
  .login{width:100%;height:100%; }
  .login>span{height:2.5rem;text-align:center;line-height:2.5rem;color:#fff;display:block}
  .login>span h4{font-size:0.45rem;color:#fff;font-weight:normal}
- .choose{margin:0 0.7rem 0.45rem;font-size:0.36rem;color:#848484;display:flex;}
- .choose span{width:50%;height:1rem;display:block;line-height:1rem;text-align:center;background-color:#fff;border-radius:0.106rem}
- .login .choose .active{background-color:#0094a3;color:#fff;}
+ .choose{margin:0 0.7rem 0.45rem;font-size:0.36rem;color:#848484;display:flex;justify-content: space-around;align-items:center;background-color:#fff;}
+ .choose span{width:100%;height:1rem;display:block;line-height:1rem;text-align:center;}
+ .login .choose .active{background-color:#0094a3;color:#fff;border-radius:0.1rem;position:relative;z-index:2;margin:0 -0.05rem}
  .login form{font-size:0.28rem;margin:0 0.7rem }
  .loginmsg {border-radius:0.1rem;background-color:#ececec}
  .loginmsg .cell{height:1.03rem;display:flex;justify-content:space-between;align-items:center;}
