@@ -7,6 +7,8 @@ var app = express();
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
+app.use(express.static('upload'));
+
 var conn = mysql.createConnection({
   host     : 'localhost',
   user     : 'vue',
@@ -15,7 +17,7 @@ var conn = mysql.createConnection({
 });
 
 var ticket = require('./routes/ticket');
-ticket.listenTicket(app,conn);
+ticket.listen(app,conn,multer);
 
 app.listen(8888);
 console.log('start server');
