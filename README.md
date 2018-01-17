@@ -25,7 +25,7 @@ return Value:[{}]   || 'err'
 ### 通过id查找ticket
 url:http://10.40.153.145:8888/ticket/getTicketById
 
-data:{id:int}
+data:{id:number}
 
 return Value:{}   || 'err'
 
@@ -58,6 +58,21 @@ url:http://10.40.153.145:8888/register/usercs
 data:{phone:string,password:string,name:string}
 
 return Value:'success'   || 'err'
+
+### 修改个人资料（个人用户）
+url:http://10.40.153.145:8888/user/update
+
+data:{id:number,phone:string,password:string,name:string,birth:string,sex:string}
+
+return Value:'success'   || 'err'
+
+### 修改个人资料（公司||景区用户）
+url:http://10.40.153.145:8888/usercs/update
+
+data:{id:number,phone:string,password:string,name:string,address:string,contact:string}
+
+return Value:'success'   || 'err'
+
 
 # app篇
 

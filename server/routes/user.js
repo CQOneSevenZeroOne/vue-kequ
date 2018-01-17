@@ -64,4 +64,30 @@ module.exports.listen = function(app,conn){
             }
         })
     })
+
+    app.post('/user/update',(req,res)=>{
+        res.append("Access-Control-Allow-Origin","*");
+        var sql = `update user_p set phone = '${req.body.phone}' , pwd = '${req.body.password}' , name = '${req.body.name}' , birth = '${req.body.birth}' , sex = '${req.body.sex}' where id = ${req.body.id}`;
+        console.log(sql)
+        conn.query(sql,function(err){
+            if(err){
+                res.send('err')
+            }else{
+                res.send('success')
+            }
+        })
+    })
+
+    app.post('/usercs/update',(req,res)=>{
+        res.append("Access-Control-Allow-Origin","*");
+        var sql = `update user_c_s set phone = '${req.body.phone}' , pwd = '${req.body.password}' , name = '${req.body.name}' , address = '${req.body.address}' , contact = '${req.body.contact}' where id = ${req.body.id}`;
+        console.log(sql)
+        conn.query(sql,function(err){
+            if(err){
+                res.send('err')
+            }else{
+                res.send('success')
+            }
+        })
+    })
 }
