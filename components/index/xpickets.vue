@@ -1,16 +1,16 @@
 <template>
   <div id="list">
       <ul>
-         <li> 
+         <li v-for ="picket in picketslist"> 
              <div class="list-left">
                  <a href="#">
                  	<div class="listpic">
-                     <img src="../../image/list1.jpg">
+                     <img :src="picket.img">
                      </div>
                     <div class="intruct">
-                       <h4>重庆游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>重庆</span>
+                       <h4 v-text="picket.title">重庆游乐园</h4>
+                       <p >已售<i v-text="picket.salenum">42424</i>份</p>
+                       <span v-text="picket.address">重庆</span>
                     </div>
                  </a>
              </div>
@@ -19,42 +19,7 @@
                 <a href="#">收藏</a>
              </div>
          </li>
-         <li> 
-             <div class="list-left">
-                 <a href="#">
-                 	<div class="listpic">
-                     <img src="../../image/list1.jpg">
-                     </div>
-                    <div class="intruct">
-                       <h4>重庆游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>重庆</span>
-                    </div>
-                 </a>
-             </div>
-             <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#">收藏</a>
-             </div>
-         </li>
-         <li> 
-             <div class="list-left">
-                 <a href="#">
-                 	<div class="listpic">
-                     <img src="../../image/list1.jpg">
-                     </div>
-                    <div class="intruct">
-                       <h4>重庆游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>重庆</span>
-                    </div>
-                 </a>
-             </div>
-             <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#" class="collected">已收藏</a>
-             </div>
-         </li>
+        
       </ul>
       <div class="returntop">
          <img src="../../image/return.png">
@@ -77,3 +42,26 @@
 .list-right .collected{background-color:#b6b6b6}
 .returntop{position:absolute;top:4.3rem;right:0;width:0.76rem;height:0.76rem;overflow:hidden}
 </style>
+<script>
+import $ from "jquery";
+
+    export default{
+      data(){
+       return{
+        picketslist:{}
+      }
+      },
+      mounted(){
+      var self =this;
+        $.ajax({
+      url:"http://10.40.153.145:8888/ticket/getAllTickets",
+      type:'post',
+       success:function(data){
+       console.log(data[0].title)
+       console.log(data.length)
+       self.picketslist =data
+       }
+    })
+    }
+    }
+</script>
