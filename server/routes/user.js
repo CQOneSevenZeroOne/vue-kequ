@@ -8,7 +8,7 @@ module.exports.listen = function(app,conn){
             }else{
                 if(result.length != 0 ){
                     if(req.body.password==result[0].pwd){
-                        res.send('success')
+                        res.send(result[0].id)
                         return;
                     }
                 }

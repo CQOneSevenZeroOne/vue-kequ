@@ -89,3 +89,19 @@ url:http://10.40.153.145:8888/deleteAppById
 data:{appid:number}
 
 return Value:'success'   || 'err'
+
+# gift篇
+
+### 查询所有gift
+url:http://10.40.153.145:8888/gift/getAllGift
+
+data:{}
+
+return Value:[{}]   || 'err'
+
+### 通过礼品编号（num）查询gift
+url:http://10.40.153.145:8888/gift/getGiftByNum
+
+data:{num:number}
+
+return Value:{}   || 'err'
