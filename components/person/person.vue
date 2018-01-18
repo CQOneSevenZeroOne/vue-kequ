@@ -23,28 +23,58 @@
 		<div id="centent">
 			<h6>我的预约</h6>
 			<ul id="mine">
-				<li>
-					<img src="../../image/home_16.png"/>
+				<li v-for="i in data">
+					<img :src="i.img"/>
 					<div class="xq">
-						<h5>重庆游乐园</h5>
+						<h5>{{i.title}}</h5>
 						<span>门票</span>
-						<p>有效期：2017-6-9</p>
+						<p>有效期：{{i.time | moment}}</p>
 					</div>
-					<a href="##" class="ticket">门票二维码</a>
+					<a href="#/ticket" class="ticket" @click="sendid">门票二维码</a>
 				</li>
 			</ul>
 		</div>
 	</div>
+		
 </template>
 
 <script>
-	import ticket from "./ticket.vue";
-	import change from "./change.vue";
+	// import ticket from "./ticket.vue";
+	// import change from "./change.vue";
+	import $ from 'jquery'
+	import moment from 'moment'
+	
 	export default {
-	  components:{
-	      ticket,
-	      change,
-	  }
+		data(){
+			return {
+				data:''
+			}
+		},
+		filters: {
+			moment:function (value, formatString) {
+    formatString = formatString || 'YYYY-MM-DD';
+    return moment(value).format(formatString);
+}
+		},
+		methods:{
+			sendid:function(){
+				this.$store.state.ticket
+			}
+		},
+		mounted:function(){
+			var self = this
+			$.ajax({
+				url:"http://10.40.153.145:8888/app/getAllAppById",
+				type:"post",
+				data:{
+					userid:"1"
+				},
+				success:function(data){
+					console.log(data)
+					self.data=data
+				}
+			})
+		}
 	}
 </script>
 
@@ -75,5 +105,5 @@
 	.xq>span{display:block;font-size: 0.16rem;color: #FF631F;border:0.01rem solid #FF631F;border-radius: 0.04rem;margin-top:0.1rem;width: 0.6rem;text-align: center;}
 	.xq>p{font-size:0.26rem;margin-top:0.3rem;color: #6C6C6C;}
 	.ticket{font-size: 0.24rem;display: inline-block;width: 1.4rem;height: 0.5rem;background:#0094A3 ;color: #fff;line-height: 0.5rem;text-align: center;border-radius: 0.1rem;
-	margin-left: 0.8rem;margin-top: 0.5rem;}
+	margin-left: 0.5rem;margin-top: 0.5rem;}
 </style>
