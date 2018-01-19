@@ -4,7 +4,7 @@
             <h3 class="tip">提交成功</h3>
             <img src="../../image/warming.png" alt="">
             <p>我们的工作人员将会在24小时内确认您的预约信息，请留意您预留的手机号码，感谢！</p>
-            <a href="##">返回个人中心</a>
+            <a href="#/person">返回个人中心</a>
         </div>
     </div>
 </template>
