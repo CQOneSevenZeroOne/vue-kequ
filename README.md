@@ -4,6 +4,28 @@ This is a tourism project written in Vue
 # 后台服务器
 url:http://10.40.153.145:8888/
 
+# 验证码篇
+
+### 发送验证码
+url:http://10.40.153.145:8888/sendMessage
+
+data:{phone:string}
+
+return Value:'success'   || 'err'
+
+注:开放测试号码为['17623085842','15023142476','17689939887']
+
+发送成功后返回的值可能有出入,麻烦console一下
+
+### 短信验证
+url:http://10.40.153.145:8888/validate
+
+data:{phone:string,code:string}
+
+return Value:'success'   || 'err'
+
+
+注:短信验证有效时间为5分钟
 
 # ticket篇
 
@@ -36,7 +58,7 @@ url:http://10.40.153.145:8888/login/userp
 
 data:{phone:string,password:string}
 
-return Value:'success'   || 'err'
+return Value:{id}   || 'err'
 
 ### 企业以及公司用户登录
 url:http://10.40.153.145:8888/login/usercs
@@ -63,6 +85,13 @@ return Value:'success'   || 'err'
 url:http://10.40.153.145:8888/user/update
 
 data:{id:number,phone:string,password:string,name:string,birth:string,sex:string}
+
+return Value:'success'   || 'err'
+
+### 修改个人密码（个人用户）
+url:http://10.40.153.145:8888/user/updatepwd
+
+data:{id:number,password:string,newpwd:string}
 
 return Value:'success'   || 'err'
 
