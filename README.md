@@ -60,6 +60,40 @@ data:{phone:string,password:string}
 
 return Value:{id}   || 'err'
 
+### 个人用户登录（验证码登录）
+url:http://10.40.153.145:8888/login/code
+
+data:{phone:string,code:string}
+
+return Value:{id}   || 'err'
+
+### 通过id查询个人用户号码
+url:http://10.40.153.145:8888/user/getPhoneById
+
+data:{id:number}
+
+return Value:  string(phoneNumber)   || 'err'
+
+### 修改个人用户密码（传入手机号和密码和手机验证码）
+url:http://10.40.153.145:8888/user/changePwdById
+
+data:{phone:string,password:string,code:string}
+
+### 修改公司企业用户密码（传入手机号和密码和手机验证码）
+url:http://10.40.153.145:8888/usercs/changePwdById
+
+data:{phone:string,password:string,code:string}
+
+return Value:  'success'   || 'err'
+
+
+### 修改个人用户手号码,默认先更新个人用户，个人用户不存在这个号码时才更新公司企业用户（传入旧手机号和新手机和手机验证码）
+url:http://10.40.153.145:8888/user/changePhone
+
+data:{phone:string,newphone:string,code:string}
+
+return Value:  'success'   || 'err'
+
 ### 企业以及公司用户登录
 url:http://10.40.153.145:8888/login/usercs
 

@@ -38,7 +38,7 @@ module.exports.listen = function(app,conn){
                                                     console.log('delnum '+req.body.phone)
                                                 }
                                             })
-                                        },1200)
+                                        },500000)
                                     }
                                 })
                             }
@@ -47,7 +47,7 @@ module.exports.listen = function(app,conn){
                             response.send('err')
                         })
                     }else{
-                        response.send('please five mintues send again')
+                        response.send('please five mintues later send again')
                     }
                 }
             })

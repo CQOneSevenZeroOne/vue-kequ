@@ -21,6 +21,36 @@ module.exports.listen = function(app,conn){
         })
     })
 
+    app.post('/login/code',(req,res)=>{
+        res.append("Access-Control-Allow-Origin","*");
+        var sql = `select * from validate where phone = '${req.body.phone}'`;
+        conn.query(sql,function(err,result){
+            if(err){
+                res.send('fail')
+            }else{
+                if(result.length != 0 ){
+                    if(req.body.code==result[0].code){
+                        conn.query(`select * from user_p where phone = '${req.body.phone}'`,function(err,result){
+                            if(err){
+                                res.send('err')
+                            }else{
+                                if(result.length!=0){
+                                    var obj = {};
+                                    obj.id = result[0].id;
+                                    res.send(obj)
+                                }
+                            }
+                        })
+                    }else{
+                        res.send('fail');
+                    }
+                }else{
+                    res.send('fail');
+                }
+            }
+        })
+    })
+
     app.post('/login/usercs',(req,res)=>{
         res.append("Access-Control-Allow-Origin","*");
         var sql = `select * from user_c_s where phone = '${req.body.phone}'`;
@@ -121,5 +151,105 @@ module.exports.listen = function(app,conn){
         })
 
        
+    })
+
+    app.post('/user/getPhoneById',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from user_p where id = ${req.body.id}`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                if(result.length!=0){
+                    res.send(result[0].phone)
+                }else{
+                    res.send('err')
+                }
+            }
+        })
+    })
+
+    app.post('/user/changePwdById',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from validate where phone = '${req.body.phone}'`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                if(result.length!=0){
+                   if(result[0].code==req.body.code){
+                       conn.query(`update user_p set pwd = '${req.body.password}' where phone = '${req.body.phone}'`,function(err,result){
+                            if(err){
+                                res.send('err')
+                            }else{
+                                res.send('success')
+                            }
+                       })
+                   }
+                }else{
+                    res.send('err')
+                }
+            }
+        })
+    })
+
+    app.post('/usercs/changePwdById',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from validate where phone = '${req.body.phone}'`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                if(result.length!=0){
+                   if(result[0].code==req.body.code){
+                       conn.query(`update user_c_s set pwd = '${req.body.password}' where phone = '${req.body.phone}'`,function(err,result){
+                            if(err){
+                                res.send('err')
+                            }else{
+                                res.send('success')
+                            }
+                       })
+                   }
+                }else{
+                    res.send('err')
+                }
+            }
+        })
+    })
+
+    app.post('/user/changePhone',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from validate where phone = '${req.body.phone}'`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                if(result.length!=0){
+                   if(result[0].code==req.body.code){
+                       conn.query(`select * from user_p where phone = '${req.body.phone}'`,function(err,result){
+                            if(err){
+                                res.send('err')
+                            }else{
+                                if(result.length!=0){
+                                    conn.query(`update user_p set phone = '${req.body.newphone}' where phone = '${req.body.phone}'`,function(err,result){
+                                        if(err){
+                                            res.send('err')
+                                        }else{
+                                            res.send('success')
+                                        }
+                                    })
+                                }else{
+                                    conn.query(`update user_c_s set phone = '${req.body.newphone}' where phone = '${req.body.phone}'`,function(err,result){
+                                        if(err){
+                                            res.send('err')
+                                        }else{
+                                            res.send('success')
+                                        }
+                                    })
+                                }
+                            }
+                       })
+                   }
+                }else{
+                    res.send('err')
+                }
+            }
+        })
     })
 }
