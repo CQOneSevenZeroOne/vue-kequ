@@ -10,7 +10,7 @@
    </div>
 </div>
 </template>
-<style>
+<style scoped>
  .login{width:100%;height:100%;}
  .login>span{height:2.5rem;text-align:center;line-height:2.5rem;color:#fff;display:block}
  .login>span h4{font-size:0.45rem;color:#fff;font-weight:normal}

@@ -1,16 +1,16 @@
 <template>
 	<div id="person">
 		<div id="header">
-			<a href="##"><img src="../../image/home.png"/></a>
+			<a href="#/index/home"><img src="../../image/home.png"/></a>
 			<h1>用户中心</h1>
-			<a href="##"><img src="../../image/more.png"/></a>
+			<a href="##" @click="show"><img src="../../image/more.png"/></a>
 		</div>
 		<div id="login">
 			<div id="head">
-				<img src="../../image/head.png"/>
+				<a href="#/change"><img src="../../image/head.png"/></a>
 			</div>
-			<a href="##" class="login">登录</a>
-			<a href="##" class="regester">注册</a>
+			<a href="#/login/quicklogin#" class="login" >登录</a>
+			<a href="#/regest/personal" class="regester">注册</a>
 		</div>
 		<div class="fen"></div>
 		<div id="gift">
@@ -34,11 +34,26 @@
 				</li>
 			</ul>
 		</div>
+		   <div class="shopcar" v-show="isshow">
+           <div class="collect">
+              <a href="#">
+                <img src="../../image/shop.png">
+                <p>收藏</p>
+              </a>
+           </div>
+            <div class="collect">
+              <a href="#">
+                <img src="../../image/custom.png">
+                <p>客服</p>
+              </a>
+           </div>
+        </div>
 	</div>
 		
 </template>
 
 <script>
+    
 	// import ticket from "./ticket.vue";
 	// import change from "./change.vue";
 	import $ from 'jquery'
@@ -47,7 +62,8 @@
 	export default {
 		data(){
 			return {
-				data:''
+				data:'',
+				 isshow:false
 			}
 		},
 		filters: {
@@ -59,7 +75,11 @@
 		methods:{
 			sendid:function(){
 				this.$store.state.ticket
-			}
+			},
+	      show(){
+          this.isshow = !this.isshow;
+           },
+          
 		},
 		mounted:function(){
 			var self = this
@@ -78,7 +98,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	#person{display: flex;flex-direction:column ;height: 100%;}
 	#person>#header{height: 0.9rem;display:flex;justify-content:space-between;box-sizing: border-box;padding: 0 0.3rem;background: #0094A3;}
 	#header>a{display: inline-block;width: 0.46rem;height: 0.46rem;vertical-align: top;margin-top: 0.22rem; }
@@ -93,7 +113,7 @@
 	#gift{height: 2rem;box-sizing: border-box;padding:0 0.3rem;}
 	#person h6{font-size: 0.3rem;font-weight: normal;margin:0.23rem 0;color: #0094A3;}
 	#ma>a{font-size: 0.3rem;display: inline-block;height: 0.76rem;width: 1.8rem;position: absolute;right: 0;text-align: center;color: #fff;background: #0094A3;}
-	#ma>input{outline: none;border: 0;position: absolute;height: 0.76rem;width: 5.1rem;border-radius: 0.1rem;font-size: 0.3rem;color: #FFFFFF;text-indent:0.3rem}
+	#ma>input{outline: none;border: 0;position: absolute;height: 0.76rem;width: 5.1rem;border-radius: 0.1rem;font-size: 0.3rem;color:#848484;text-indent:0.3rem}
 	#ma{height: 0.8rem;position: relative;box-sizing: border-box;border: 0.02rem solid #0094A3;border-radius: 0.1rem;line-height: 0.76rem;}
 	#centent{display: flex;flex-direction: column;}
 	#centent>h6{height: 0.8rem;box-sizing: border-box;padding: 0 0.3rem;border-bottom: 0.01rem solid #EEEEEE;}
@@ -106,4 +126,8 @@
 	.xq>p{font-size:0.26rem;margin-top:0.3rem;color: #6C6C6C;}
 	.ticket{font-size: 0.24rem;display: inline-block;width: 1.4rem;height: 0.5rem;background:#0094A3 ;color: #fff;line-height: 0.5rem;text-align: center;border-radius: 0.1rem;
 	margin-left: 0.5rem;margin-top: 0.5rem;}
+	#person .shopcar{position:absolute;right:0;top:1rem;width:1.2rem;height:1.8rem;background-color:#fff;text-align:center;z-index:5}
+#person .shopcar a{font-size:0.22rem;color:#484848;line-height:0.4rem}
+.shopcar a img{display:block;margin-left:0.4rem;width:0.3rem;}
+.collect{margin-top:0.16rem}
 </style>

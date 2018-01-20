@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="regest">
 	  <rheader/>
 	<form>
@@ -6,11 +7,10 @@
 	  <rfooter/>
 	</form>
  </div>
+ </div>
 </template>
-<style>
-html {height:100%}
-body{background-image:url("../../image/back.jpg");background-repeat:no-repeat;background-size:cover}
- #regest{width:100%;height:100%;}
+<style scoped>
+#regest{width:100%;height:100%;background-image:url("../../image/back.jpg");background-repeat:no-repeat;background-size:cover}
  #regest form{font-size:0.28rem;margin:0 0.7rem }
 </style>
 <script>

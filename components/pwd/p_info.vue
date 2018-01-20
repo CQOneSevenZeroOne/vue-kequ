@@ -8,7 +8,7 @@
                   <img src="../../image/c_right.jpg">
               </div>
           </li>
-          <li>
+          <li @click="changephone">
               <span class="name">手机号码</span>
               <div class="box">
                   <span class="info">12345678910</span>
@@ -27,17 +27,19 @@
                   <span class="info">2017-6-12</span>
               </div>
           </li>
-          <li>
+          <li  @click="changepwd">
               <span class="name">密码设置</span>
               <div class="box">
                   <img src="../../image/c_right.jpg">
               </div>
           </li>
       </ul>
-      <div id="btn">退出登录</div>
+      <div id="btn" @click="logout">退出登录</div>
   </div>
 </template>
 <script>
+   var url = location.href;
+   var arr = url.split("#");
     var $ = require('jquery')
     export default{
         data:function(){
@@ -55,6 +57,15 @@
                     type:'post',
                     url:''
                 })
+            },
+            changephone:function(){
+              window.location.href=arr[0]+"#/change"
+            },
+            changepwd:function(){
+              window.location.href=arr[0]+"#/pwdmain"
+            },
+            logout:function(){
+              window.location.href=arr[0]+"#/index/home"
             }
         }
     }

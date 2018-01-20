@@ -31,7 +31,7 @@
 	 </form>
 </div>
 </template>
-<style>
+<style scoped>
  .gift>span{display:block;height:2.3rem;line-height:2.3rem;text-align:center}
 .gift>span h4{font-size:0.44rem;font-weight:normal}
 form{margin:0 0.7rem;font-size:0.26rem}

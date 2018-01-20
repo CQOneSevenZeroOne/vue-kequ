@@ -29,7 +29,7 @@
        
    </div>
 </template>
-<style>
+<style scoped>
 .enterprise{position:relative;width:100%;}
  .loginmsg {border-radius:0.1rem;background-color:#ececec;}
  .loginmsg .cell{height:1.03rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dadada;margin:0 0.1rem}

@@ -6,7 +6,7 @@
       </ul>
    </div>
 </template>
-<style>
+<style scoped>
 #title{height:0.9rem;border-top:0.3rem solid #ebebeb;}
 #title ul{display:flex;justify-content:space-around;align-items:center;height:0.85rem;background-color:#f8f8f8;border-bottom:1px solid #dadada;line-height:0.85rem}
 #title ul li{width:33.33%;text-align:center;color:#484848;font-size:0.32rem;font-weight:600;font-family:"宋体";letter-spacing: 0.1rem;}

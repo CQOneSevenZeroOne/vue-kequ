@@ -24,7 +24,7 @@
       </div>
   </div>
 </template>
-<style>
+<style scoped>
 .hint{margin-top:0.3rem;height:0.8rem;display:flex;justify-content:flex-end;align-items:center}
 .forgetpwd a{font-size:0.34rem;color:#0094a3}
 .success{width:2.8rem;height:0.8rem;background-color:#727171;color:#fff;text-align:center;line-height:0.8rem;border-radius:0.1rem;font-size:0.3rem}
@@ -99,7 +99,7 @@ export default{
 },
     computed:{
       loginid:function(){
-      return this.$store.state.loginid;
+       return this.$store.state.loginid;
       }
    }
 }

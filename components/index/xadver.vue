@@ -14,7 +14,7 @@
        </transition-group>
    </div>
 </template>
-<style>
+<style scoped>
  #adv {height:0.95rem;font-size:0.28rem;color:#484848;border-left:0.16rem solid #ff4e00;text-align:center;overflow:hidden}
 #adv .road{float:left;width:20%;line-height:0.95rem;border-right:1px solid #dadada;}
 #adv ul {float:left;width:72%;padding:0 0.1rem}

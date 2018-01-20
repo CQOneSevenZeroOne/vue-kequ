@@ -13,7 +13,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
 	#ticket{width: 100%;height: 100%;background: #0094A3;}
 	#ticket>h6{font-size: 0.3rem;color: #fff;text-align: center;padding: 0.3rem 0;font-weight: 500;}
 	#ticket>.ma{width: 5.4rem;margin:0.2rem auto;background: #fff;padding: 0.85rem 0;}

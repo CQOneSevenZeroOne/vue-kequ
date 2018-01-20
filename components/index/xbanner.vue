@@ -11,7 +11,7 @@
     </div>
 </div>
 </template>
-<style>
+<style scoped>
 #banner{height:2.6rem;width:100%;overflow:hidden;position:relative}
 .slide-ul{width:100%;height:100%;height:2.6rem;}
 .slide-ul li{

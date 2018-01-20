@@ -19,9 +19,9 @@
       </div>
         <div class="shopcar" v-show="isshow">
            <div class="collect">
-              <a href="#">
+              <a href="#/usermain">
                 <img src="../../image/shop.png">
-                <p>收藏</p>
+                <p >收藏</p>
               </a>
            </div>
             <div class="collect">
@@ -34,7 +34,7 @@
    </header>
   </div>
 </template>
-<style>
+<style scoped>
 #go header{height:1rem;background-color:#0094a3;display:flex;justify-content:space-between;align-items: center;padding:0 0.12rem;}
 #go .shopcar{position:absolute;right:0;top:1rem;width:1.2rem;height:1.8rem;background-color:#fff;text-align:center;z-index:5}
 #go .shopcar a{font-size:0.22rem;color:#484848;line-height:0.4rem}
@@ -62,13 +62,15 @@ export default {
           this.isshow = !this.isshow;
       },
       personal(){
-       if(this.$store.state!="")
+      console.log(this.$store.state.loginid)
+      if(this.$store.state.loginid!="")
        {
-        console.log(this.$store.state)
+         window.location.href=arr[0]+"#/usermain"
        }
-      else{
-        window.location.href=arr[0]+"#/login/quicklogin"
+       if(this.$store.state.loginid==""){
+        window.location.href=arr[0]+"#/person"
       }
+       
    }
   }
  }
