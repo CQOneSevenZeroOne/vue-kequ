@@ -36,12 +36,19 @@ data:{}
 
 return Value:[{}]   || 'err'
 
+### 获取所有ticket以及预约状态
+url:http://10.40.153.145:8888/ticket/getAllTicketsAndApp
+
+data:{}
+
+return Value:{tickets:[{}],apps:[{}]}   || 'err'
+
 ### 获取自由行或者跟团游所有ticket
 url:http://10.40.153.145:8888/ticket/getAllFreedomTickets
 
 data:{type:'自由行'||'跟团游'}
 
-return Value:{tickets:[{}],apps:[{}]}   || 'err'
+return Value:[{}]   || 'err'
 
 
 ### 通过id查找ticket
@@ -140,6 +147,7 @@ return Value:'success'   || 'err'
 url:http://10.40.153.145:8888/usercs/update
 
 data:{id:number,phone:string,password:string,name:string,address:string,contact:string}
+
 return Value:'success'   || 'err'
 
 

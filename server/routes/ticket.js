@@ -15,7 +15,18 @@ module.exports.listen = function(app,conn,multer){
     
 
     app.post('/ticket/getAllTickets',(req,res)=>{
-        var obj = {};
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query('select * from ticket',function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                res.send(result)
+            }
+        })
+    })
+
+    app.post('/ticket/getAllTicketsAndApp',(req,res)=>{
+        var json = {};
         var bool = true ;
         res.append("Access-Control-Allow-Origin","*");
         conn.query('select * from ticket',function(err,result){
@@ -23,20 +34,23 @@ module.exports.listen = function(app,conn,multer){
                 res.send('err')
                 bool = false;
             }else{
-                obj.tickets = result;
+                json.tickets = result;
+                conn.query('select * from app',function(err,result){
+                    if(err){
+                        res.send('err')
+                        bool = false;
+                    }else{
+                        json.apps = result;
+                        if(bool){
+                            console.log(json)
+                            res.send(json)
+                        }
+                    }
+                })
             }
         })
-        conn.query('select * from app',function(err,result){
-            if(err){
-                res.send('err')
-                bool = false;
-            }else{
-                obj.apps = result;
-            }
-        })
-        if(bool){
-            res.send(obj)
-        }
+        
+       
         
     })
 
