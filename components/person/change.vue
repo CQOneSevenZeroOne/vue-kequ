@@ -5,15 +5,56 @@
 			<h4>手机号码</h4>
 		</div>
 		<ul class="content">
-			<li><span>原手机号</span><input type="text" id="" value="" placeholder="输入您现在的手机号"/></li>
-			<li class="yzm"><span>验证码</span><input type="text" name="" id="" value="" placeholder="输入验证码"/><a href="##">获取验证码</a></li>
-			<li><span>号码设置</span><input type="text" id="" value="" placeholder="输入新的手机号"/></li>
+			<li><span>原手机号</span><input type="text" v-model="oldphone" placeholder="输入您现在的手机号"/></li>
+			<li class="yzm"><span>验证码</span><input type="text" v-model="code" placeholder="输入验证码"/><a href="javascript:" @click="getcode">获取验证码</a></li>
+			<li><span>号码设置</span><input type="text" v-model="newphone" placeholder="输入新的手机号"/></li>
 		</ul>
-		<a href="##" id="save">保存</a>
+		<a href="#javascript:" @click="sendcode" id="save">保存</a>
 	</div>
 </template>
 
 <script>
+import $ from 'jquery'
+export default {
+	data(){
+		return {
+			oldphone:"",
+			code:"",
+			newphone:""
+		}
+	},
+	methods:{
+		getcode:function(){
+			var self=this
+			$.ajax({
+				url:"http://10.40.153.145:8888/sendMessage",
+				type:"post",
+				data:{
+					phone:self.oldphone
+				},
+				success:function(data){
+					console.log(data)
+				}
+			})
+		},
+		sendcode:function(){
+			var self=this
+			$.ajax({
+				url:"http://10.40.153.145:8888/user/changePhone",
+				type:"post",
+				data:{
+					phone:self.phonenum,
+					code:self.code,
+					newphone:self.newphone
+				},
+				success:function(data){
+					console.log(data)
+				}
+			})
+
+		}
+	}
+}
 </script>
 
 <style>

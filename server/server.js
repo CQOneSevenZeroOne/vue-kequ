@@ -21,10 +21,13 @@ var user = require('./routes/user.js')
 var appointment = require('./routes/appointment.js')
 var gift = require('./routes/gift.js')
 
+var send = require('./routes/send.js')
+
 ticket.listen(app,conn,multer);
 user.listen(app,conn);
 appointment.listen(app,conn);
 gift.listen(app,conn);
+send.listen(app,conn);
 
 app.listen(8888);
 console.log('start server');

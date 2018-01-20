@@ -18,17 +18,25 @@
         <div id="fen"></div>
         <div id="content">
             <h6>免票政策</h6>
-        </div>
+            <h6>身高1.2米以下儿童免费（仅免大门票）；</h6>
+            <h6>70岁以上老人持身份证免费（仅免大门票）；</h6>
+            <h6>现役军人持军官证免费（仅免大门票）。</h6>
+            <h6>优惠政策：</h6>
+            <h6>身高1.2--1.5米之间的儿童购景区优惠票；</h6>
+            <h6>60--69岁之间老人持身份证购景区优惠票；</h6>
+            <h6>全日制在校本科以及本科以下的学生持学生证购景区优惠票。上</h6>
+            <h6>述优惠政策，需到景区自行购买。</h6>
+     </div>
         <div id="footer">
-            <a href="##" id="server"><img src="../../image/server.png"/>客服</a>
-            <a href="##" id="yuding">立即预定</a>
+            <a href="javascript:" id="server"><img src="../../image/server.png"/>客服</a>
+            <a href="javascript:" @click="aisshow" id="yuding">立即预定</a>
         </div>
         <success></success>
         <roadtime></roadtime>
   </div>
 </template>
 <style scoped>
-		#collection{display: flex;flex-direction: column;height: 100%;}
+	#collection{display: flex;flex-direction: column;height: 100%;}
     #banner{height: 3.6rem;position: relative;display: flex;}
     .jt{position: absolute;left: 0.3rem;top:0.3rem;width: 0.2rem;height: 0.28rem;}
     #swiper{position: absolute;padding: 0;margin:0;width: 100%;height: 3.6rem;top: 0;left: 0;z-index: -1;}
@@ -49,12 +57,22 @@
 </style>
 <script type="text/javascript">
 	import roadtime from "./roadtime.vue";
-	import success from "./success.vue";
+    import success from "./success.vue";
 	export default {
-	  components:{
-	      roadtime,
-	      success
-	  }
+        // data(){
+        //     return{
+        //         // ashow:false
+        //     }
+        // },
+        methods:{
+            aisshow:function(){
+                this.$store.state.ashow=true
+            }
+        },
+	    components:{
+            roadtime,
+            success
+	    }
 	}
 </script>
 
