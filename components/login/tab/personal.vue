@@ -51,7 +51,7 @@ import $ from "jquery"
       personalphone:this.$store.state.personalphone,
       personalpwd:this.$store.state.personalpwd,
        personalcode:this.$store.state.personalcode,
-       getnum:"获取验证码"
+       getnum:"获取验证码",
     }
    },
    methods:{
@@ -61,18 +61,21 @@ import $ from "jquery"
       this.$store.state.personalcode=this.personalcode;
       this.$store.state.pisshow=this.pisshow;
     },
-    getcode:function(){
+   getcode:function(){
        var self=this;
         var number = 60;
        this.timer=setInterval(function(){
          number--;
          self.getnum = number+"秒后获取"
+         if(number<0){
+           self.getnum = "获取验证码"
+         }
        },1000)
         $.ajax({
          url:"http://10.40.153.145:8888/sendMessage",
          type:"post",
          data:{
-            phone:this.phone
+            phone:this.personalphone
           },
          success:function(data){
            console.log(data);
