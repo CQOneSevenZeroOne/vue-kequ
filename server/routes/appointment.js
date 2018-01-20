@@ -22,4 +22,16 @@ module.exports.listen = function(app,conn){
             }
         })
     })
+
+    app.post('/app/addApp',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        var sql = `insert into app (userid,ticketid,time) values(${req.body.userid},${req.body.ticketid},now())`;
+        conn.query(sql,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                res.send('success')
+            }
+        })
+    })
 }

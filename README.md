@@ -160,6 +160,13 @@ data:{userid:number}
 
 return Value:[{}]   || 'err'
 
+### 新增预约
+url:http://10.40.153.145:8888/app/addApp
+
+data:{userid:number，ticketid:number}
+
+return Value:'success'  || 'err'
+
 ### 通过id更新app状态(取消预约)
 url:http://10.40.153.145:8888/deleteAppById
 
