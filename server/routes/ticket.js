@@ -15,14 +15,29 @@ module.exports.listen = function(app,conn,multer){
     
 
     app.post('/ticket/getAllTickets',(req,res)=>{
+        var obj = {};
+        var bool = true ;
         res.append("Access-Control-Allow-Origin","*");
         conn.query('select * from ticket',function(err,result){
             if(err){
                 res.send('err')
+                bool = false;
             }else{
-                res.send(result)
+                obj.tickets = result;
             }
         })
+        conn.query('select * from app',function(err,result){
+            if(err){
+                res.send('err')
+                bool = false;
+            }else{
+                obj.apps = result;
+            }
+        })
+        if(bool){
+            res.send(obj)
+        }
+        
     })
 
     app.post('/ticket/getTicketById',(req,res)=>{
