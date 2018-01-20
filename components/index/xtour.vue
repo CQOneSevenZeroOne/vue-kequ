@@ -61,7 +61,7 @@
       </div>
    </div>
 </template>
-<style>
+<style scoped>
 #list{margin:0 0.3rem;position:relative}
 #list ul li{min-height:1.9rem;border-bottom:1px solid #dadada;display:flex;justify-content: space-between;align-items:center;}
 #list .list-left a{display:flex;justify-content: space-between;align-items: center;color:#484848}

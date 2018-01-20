@@ -1,5 +1,5 @@
  <template>
- <div>
+ <div class="quick">
   <div class="loginmsg">
      <div class="cell">
         <label>手机号</label>
@@ -19,7 +19,8 @@
    </div>
   </div>
  </template>
- <style>
+ <style scoped>
+ .quick{height:100%}
  .loginmsg {border-radius:0.1rem;background-color:#ececec}
  .loginmsg .cell{height:1.03rem;display:flex;justify-content:space-between;align-items:center;}
  .loginmsg .cell label{width:25%;text-align:center;color:#484848;}

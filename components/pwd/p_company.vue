@@ -30,7 +30,7 @@
       <div id="btn">退出登录</div>
   </div>
 </template>
-<style>
+<style scoped>
 #btn{
     font-size: 0.24rem;
     color: #8a8a8a;

@@ -16,7 +16,7 @@
    </div>
   </div>
  </template>
- <style>
+ <style scoped>
  .loginmsg {border-radius:0.1rem;background-color:#ececec}
  .loginmsg .cell{height:1.03rem;display:flex;justify-content:space-between;align-items:center;}
  .loginmsg .cell label{width:25%;text-align:center;color:#484848;}

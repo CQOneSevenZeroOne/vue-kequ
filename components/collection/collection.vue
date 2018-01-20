@@ -1,7 +1,7 @@
 <template>
   <div id="collection">
         <div id="banner">
-            <a href="##" class="jt"><img src="../../image/yjt.png" alt=""></a>
+            <a href="##" class="jt" @click="breakpre"><img src="../../image/yjt.png" alt=""></a>
             <a href="##" class="share"><img src="../../image/share.png" alt=""></a>
             <div id="dian">
                 <img src="../../image/picture.png" alt=""><span>1/3</span>
@@ -67,6 +67,9 @@
         methods:{
             aisshow:function(){
                 this.$store.state.ashow=true
+            },
+            breakpre(){
+             window.history.go(-1)
             }
         },
 	    components:{

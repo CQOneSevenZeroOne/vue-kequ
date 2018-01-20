@@ -3,7 +3,7 @@
       <ul>
          <li v-for ="picket in picketslist"> 
              <div class="list-left">
-                 <a href="#">
+                 <a href="#/collection">
                  	<div class="listpic">
                      <img :src="picket.img">
                      </div>
@@ -26,7 +26,7 @@
       </div>
    </div>
 </template>
-<style>
+<style scoped>
 #list{margin:0 0.3rem;position:relative}
 #list ul li{min-height:1.9rem;border-bottom:1px solid #dadada;display:flex;justify-content: space-between;align-items:center;}
 #list .list-left a{display:flex;justify-content: space-between;align-items: center;color:#484848}

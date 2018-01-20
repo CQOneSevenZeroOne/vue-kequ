@@ -10,7 +10,7 @@
    </div>
  </div>
 </template>
-<style>
+<style scoped>
  .top>span{height:2.45rem;text-align:center;line-height:2.4rem;color:#fff;position:relative;margin:0 0.7rem;display:block}
   .top>span i{position:absolute;left:0;font-size:0.5rem}
  .top>span h4{font-size:0.45rem;color:#fff;font-weight:normal}

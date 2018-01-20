@@ -6,7 +6,7 @@
               <b>中华田园犬</b>
               <span class="iden">企业用户</span>
           </div>
-          <img src="../../image/c_edit.png" id="edit">
+          <a href="#/userinfo"><img src="../../image/c_edit.png" id="edit"></a>
       </div>
       <img src="../../image/c_right.jpg" id="right">
   </div>

@@ -43,7 +43,7 @@
    </form>
 </div>
 </template>
-<style>
+<style scoped>
 html {height:100%}
 body{background-image:url("../../image/back.jpg");background-repeat:no-repeat;background-size:cover}
  .resetpwd{width:100%;height:100%; }

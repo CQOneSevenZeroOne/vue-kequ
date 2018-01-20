@@ -1,7 +1,7 @@
 <template>
 	<div id="change">
 		<div class="header">
-			<img src="../../image/yjt.png"/>
+			<a href="#" @click="abackpre"><img src="../../image/yjt.png"/></a>
 			<h4>手机号码</h4>
 		</div>
 		<ul class="content">
@@ -37,6 +37,9 @@ export default {
 				}
 			})
 		},
+		 abackpre(){
+              window.history.go(-1);
+           },
 		sendcode:function(){
 			var self=this
 			$.ajax({
@@ -57,10 +60,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 	#change{width: 100%;height: 100%;background: #F4F4F4;position: absolute;top: 0;left: 0;}
 	#change>.header{height: 1rem;position: relative;background: #0094A3;}
-	#change>.header>img{width: 0.16rem;height: 0.28rem;position: absolute;top: 0.3rem;left: 0.2rem;}
+	#change>.header>a>img{width: 0.16rem;height: 0.28rem;position: absolute;top: 0.3rem;left: 0.2rem;}
 	#change>.header>h4{font-size: 0.3rem;color: #fff;line-height: 1rem;text-align: center;}
 	#change>.content{margin-top:0.2rem;box-sizing: border-box;padding: 0 0.26rem;line-height: 0.9rem;font-size: 0.3rem;background: #fff;}
 	#change>.content>li{height: 0.9rem;}

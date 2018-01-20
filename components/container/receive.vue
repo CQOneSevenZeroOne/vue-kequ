@@ -24,7 +24,7 @@
    </div>
 </div>
 </template>
-<style>
+<style scoped>
 .receive header{height:1.38rem;font-size:0.45rem;line-height:1.38rem;text-align:center;margin:0 0.35rem;border-bottom:1px dashed #0094a3;color:#0094a3;}
 .detail{margin:0.4rem 0.7rem;font-size:0.28rem;color:#848484;}
 .detail .per {display:flex;justify-conten:space-around;margin:0.55rem 0}

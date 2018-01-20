@@ -27,7 +27,7 @@
    </div>
 </div>
 </template>
-<style>
+<style scoped>
 .button{margin:1.2rem 0 2rem;}
 .button .btnlogin{height:1rem;font-size:0.32rem;color:#fff;background-color:#0094a3;text-align:center;margin-bottom:0.5rem;border-radius:0.1rem}
 .btnlogin input{height:100%;font-size:0.32rem;color:#fff;background-color:#0094a3;line-height:1rem;text-align:center;border:none;outline:none;font-family:"微软雅黑"}

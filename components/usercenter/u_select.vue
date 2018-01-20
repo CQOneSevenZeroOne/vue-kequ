@@ -1,7 +1,6 @@
 <template>
   <div id="box">
-      <div class="div active">我的礼品库</div>
-      <div class="div">收藏</div>
+      <div v-for="list in isadd" v-text="list.name" :class="{div:true ,active:list.id==index}" @click="addclass(list.id)"></div>
   </div>
 </template>
 <style scoped>
@@ -25,4 +24,27 @@
     background: #4cb4be;
 }
 </style>
+<script>
+ export default{
+   data(){
+    return{
+      isadd:[{
+        id:0,
+        name:"我的礼品库"
+      },
+      {
+        id:1,
+        name:"我的收藏"
+      }
+      ],
+      index:0
+    }
+   },
+   methods:{
+     addclass:function(id){
+       this.index=id;
+     }
+   }
+ }
+</script>
 

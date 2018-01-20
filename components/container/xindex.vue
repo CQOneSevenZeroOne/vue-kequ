@@ -7,9 +7,6 @@
 	  <router-view></router-view>
   </div>
 </template>
-<style>
- body{background:#fff}
-</style>
 <script>
  import xheader from "../index/xheader.vue";
  import xbanner from "../index/xbanner.vue";

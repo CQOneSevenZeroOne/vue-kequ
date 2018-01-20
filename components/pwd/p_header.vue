@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img src="../../image/c_left.png">
+      <span @click="backpre"><img src="../../image/c_left.png"></span>
       <span>密码设置</span>
       <img class="hide">
   </div>
@@ -27,4 +27,19 @@
         font-size: 0.28rem;
     }
 </style>
+<script>
+export default{
+    data(){
+     return{
+
+     }
+    },
+    methods:{
+    backpre:function(){
+     window.history.go(-1);
+    }
+   },
+}
+  
+</script>
 
