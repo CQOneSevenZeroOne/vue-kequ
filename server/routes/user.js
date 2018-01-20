@@ -73,15 +73,30 @@ module.exports.listen = function(app,conn){
     app.post('/register/userp',(req,res)=>{
         res.append("Access-Control-Allow-Origin","*");
         var info = req.body ;
-        var sql = `insert into user_p(phone,pwd,name,birth,sex) values('${info.phone}','${info.password}','手机用户${info.phone}',now(),'男')`;
-        console.log(sql);
-        conn.query(sql,function(err,result){
+        conn.query(`select * from validate where phone = '${info.phone}'`,function(err,result){
             if(err){
-                res.send('fail')
+                res.send('err')
             }else{
-                res.send('success');
+                if(result.length!=0){
+                    if(info.code==result[0].code){
+                        var sql = `insert into user_p(phone,pwd,name,birth,sex) values('${info.phone}','${info.password}','手机用户${info.phone}',now(),'男')`;
+                        console.log(sql);
+                        conn.query(sql,function(err,result){
+                            if(err){
+                                res.send('err')
+                            }else{
+                                res.send('success');
+                            }
+                        })
+                    }else{
+                        res.send('err')
+                    }
+                }else{
+                    res.send('err')
+                }
             }
         })
+        
     })
 
     app.post('/register/usercs',(req,res)=>{
@@ -249,6 +264,17 @@ module.exports.listen = function(app,conn){
                 }else{
                     res.send('err')
                 }
+            }
+        })
+    })
+
+    app.post('/user/getInfoById',function(req,res){
+        res.append("Access-Control-Allow-Origin","*");
+        conn.query(`select * from user_p where id = ${req.body.id}`,function(err,result){
+            if(err){
+                res.send('err')
+            }else{
+                res.send(result)
             }
         })
     })

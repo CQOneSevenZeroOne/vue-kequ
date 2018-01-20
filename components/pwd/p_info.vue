@@ -37,6 +37,28 @@
       <div id="btn">退出登录</div>
   </div>
 </template>
+<script>
+    var $ = require('jquery')
+    export default{
+        data:function(){
+            return {
+                id:1,
+                username:'',
+                phone:'',
+                sex:'',
+                birth:''
+            }
+        },
+        methods:{
+            getInfo:function(){
+                $.ajax({
+                    type:'post',
+                    url:''
+                })
+            }
+        }
+    }
+</script>
 <style scoped>
 #btn{
     font-size: 0.24rem;

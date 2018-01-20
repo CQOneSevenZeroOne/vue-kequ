@@ -10,13 +10,6 @@
           </li>
           <li>
               <div class="box">
-                  <span>验证码</span>
-                  <input type="text" placeholder="输入验证码">
-              </div>
-              <a>{{atext}}</a>
-          </li>
-          <li>
-              <div class="box">
                   <span>新密码</span>
                   <input type="password" placeholder="输入新的的密码" v-model='newpwd'>
               </div>
@@ -34,9 +27,7 @@
                 id:1,
                 oldpwd:'',
                 newpwd:'',
-                message:'',
-                atext:'获取验证码',
-                bool:false;
+                message:''
             }
         }
         ,
@@ -68,28 +59,6 @@
                         }
                     }
                 })
-            },
-            send:function(){
-                var self = this ;
-                if(this.atext=='获取验证码'){
-                    this.atext = '已发送';
-                    this.bool = true;
-                }
-
-                if(bool){
-                    $.ajax({
-                        url:'http://10.40.153.145:8888/user/getPhoneById',
-                        type:'post',
-                        data:{
-                            id:self.id,
-                        },
-                        success:function(data){
-                            $.ajax({
-                                
-                            })
-                        }
-                    })
-                }
             }
         }
     }

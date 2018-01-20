@@ -74,6 +74,13 @@ data:{id:number}
 
 return Value:  string(phoneNumber)   || 'err'
 
+### 通过id查询个人用户信息
+url:http://10.40.153.145:8888/user/getInfoById
+
+data:{id:number}
+
+return Value:  string(phoneNumber)   || 'err'
+
 ### 修改个人用户密码（传入手机号和密码和手机验证码）
 url:http://10.40.153.145:8888/user/changePwdById
 
@@ -104,7 +111,7 @@ return Value:'success'   || 'err'
 ### 个人用户注册
 url:http://10.40.153.145:8888/register/userp
 
-data:{phone:string,password:string}
+data:{phone:string,password:string,code:string}
 
 return Value:'success'   || 'err'
 
