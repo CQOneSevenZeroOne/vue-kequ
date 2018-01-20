@@ -43,6 +43,7 @@
    methods:{
      addclass:function(id){
        this.index=id;
+
      }
    }
  }
