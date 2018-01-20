@@ -1,35 +1,19 @@
 <template>
   <div>
       <ul>
-          <li>
-                <img src="../../image/list1.jpg" class="listimg">
+          <li v-for="list in giftlist">
+                <img :src="list.img" class="listimg">
                 <div class="box">
                     <div class="title">
-                        <p>重庆游乐园</p>
+                        <p v-text="list.title"></p>
                         <span>门票</span>
                     </div>
                     <div class="buttom">
                         <div class="left">
                             <img src="../../image/c_local.png" class="local">
-                            <i>重庆</i>
+                            <i v-text="list.address"></i>
                         </div>
-                        <b>有效期：2017-6-9</b>
-                    </div>
-                </div>
-          </li>
-          <li>
-                <img src="../../image/list1.jpg" class="listimg">
-                <div class="box">
-                    <div class="title">
-                        <p>重庆游乐园</p>
-                        <span>门票</span>
-                    </div>
-                    <div class="buttom">
-                        <div class="left">
-                            <img src="../../image/c_local.png" class="local">
-                            <i>重庆</i>
-                        </div>
-                        <b>有效期：2017-6-9</b>
+                        <b >有效期：<i v-text="list.time"></i></b>
                     </div>
                 </div>
           </li>
@@ -103,3 +87,30 @@ li:last-of-type {
   border-bottom: 0;
 }
 </style>
+<script>
+import $ from "jquery";
+    export default{
+      data(){
+       return{
+        giftlist:{},
+        index:[]
+      }
+      },
+      mounted(){
+      var self =this;
+        $.ajax({
+      url:"http://10.40.153.145:8888/app/getAllAppById",
+      type:'post',
+      data:{
+        userid:this.$store.state.loginid
+      },
+       success:function(data){
+        self.giftlist=data;
+       }
+    })
+    },
+    methods:{
+      
+    }
+    }
+</script>
