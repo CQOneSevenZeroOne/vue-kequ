@@ -4,27 +4,24 @@
          <div class="cell">
             <label>手机号</label>
             <div class="inpucode">
-                <input type="text" placeholder="请输入手机号">
+                <input type="text" placeholder="请输入手机号" v-model="personalphone"  @blur="blurinput">
             </div>
          </div>
          <div class="cell">
             <label>验证码</label>
             <div class="input">
-               <input type="text" placeholder="请输入验证码">
+               <input type="text" placeholder="请输入验证码" v-model="personalcode"  @blur="blurinput">
             </div>
-            <div class="getcode">
-               <a href="#">获取验证码</a>
+            <div class="getcode" @click="getcode">
+               <a href="#"  v-text="getnum">获取验证码</a>
             </div>
          </div>
          <div class="cell">
             <label>密码</label>
             <div class="inpucode">
-                <input type="text" placeholder="请输入密码">
+                <input type="text" placeholder="请输入密码" v-model="personalpwd" @blur="blurinput">
             </div>
          </div>
-         <span class="sucess" >
-          注册成功
-         </span>
        </div>
        <div class="agree">
           注册表明同意
@@ -32,7 +29,6 @@
             《可去用户守则》
            </a>
        </div>
-       
    </div>
 </template>
 <style>
@@ -45,5 +41,46 @@
  .inpucode{flex:1;margin-right:1rem;}
  .agree{font-size:0.28rem;color:#0094a3;margin-top:0.3rem;text-align:center}
 .agree a{font-size:0.28rem;color:#e0e0e0;}
-.sucess{width:2.2rem;height:0.8rem;border-radius:0.1rem;background-color:rgba(152,152,152,0.6);color:#fff;line-height:0.8rem;text-align:center;font-size:0.3rem;display:block;position:absolute;left:50%;top:53%;margin-left:-1.1rem;}
+
 </style>
+<script>
+import $ from "jquery"
+ export default{
+   data(){
+    return{
+      personalphone:this.$store.state.personalphone,
+      personalpwd:this.$store.state.personalpwd,
+       personalcode:this.$store.state.personalcode,
+       getnum:"获取验证码"
+    }
+   },
+   methods:{
+    blurinput:function(){
+      this.$store.state.personalphone=this.personalphone;
+      this.$store.state.personalpwd=this.personalpwd;
+      this.$store.state.personalcode=this.personalcode;
+      this.$store.state.pisshow=this.pisshow;
+    },
+    getcode:function(){
+       var self=this;
+        var number = 60;
+       this.timer=setInterval(function(){
+         number--;
+         self.getnum = number+"秒后获取"
+       },1000)
+        $.ajax({
+         url:"http://10.40.153.145:8888/sendMessage",
+         type:"post",
+         data:{
+            phone:this.phone
+          },
+         success:function(data){
+           console.log(data);
+         }
+       })
+      
+     }
+   }
+  
+ }
+</script>

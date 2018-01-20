@@ -70,7 +70,6 @@ return Value:'success'   || 'err'
 url:http://10.40.153.145:8888/usercs/update
 
 data:{id:number,phone:string,password:string,name:string,address:string,contact:string}
-
 return Value:'success'   || 'err'
 
 

@@ -6,7 +6,7 @@
          </li>
       </transition-group>
       <div class="carousel-items">
-         <span v-for="item in slidelist" :class="{'active':item.index===currentIndex}" @mouseover="change(index)">
+         <span v-for="item in slidelist" :class="{'active':item.index===currentIndex}">
          </span>
     </div>
 </div>

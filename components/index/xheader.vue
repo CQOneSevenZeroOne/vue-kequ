@@ -11,8 +11,8 @@
          <span><img src=""></span>
          <input type="text" placeholder="请输入你想搜索的内容">
       </div>
-      <div class="person">
-         <a href=""><img src="../../image/person.png"></a>
+      <div class="person" @click="personal">
+         <a href="#"><img src="../../image/person.png"></a>
       </div>
       <div class="more" @click="show">
         <a href="#"><img src="../../image/more.png"></a>
@@ -49,6 +49,8 @@
 #go .search input{border:0;outline: none;text-indent:0.25rem;width:3rem;position:absolute;top:0.16rem;left:0.15rem;}
 </style>
 <script>
+var url = location.href;
+var arr = url.split("#");
 export default {
    data(){
       return {
@@ -57,10 +59,18 @@ export default {
   },
  methods:{
       show(){
-      console.log(1);
           this.isshow = !this.isshow;
+      },
+      personal(){
+       if(this.$store.state!="")
+       {
+        console.log(this.$store.state)
+       }
+      else{
+        window.location.href=arr[0]+"#/login/quicklogin"
       }
- }
+   }
+  }
  }
 </script>
 

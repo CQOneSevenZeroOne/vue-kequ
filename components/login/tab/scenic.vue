@@ -1,11 +1,10 @@
 <template>
  <div>
       <div class="scenic">
-            <div class="">
-               <img src ="">
+            <div class="call">
                <p>合作事宜，请联系我们</p>
             </div>
-            <div class="cell">
+            <div class="call">
              400-123-123
             </div>
        </div>
@@ -18,8 +17,8 @@
    </div>
 </template>
 <style>
- .scenic {border-radius:0.1rem;background-color:#ececec;position:relative}
- .scenic .cell{margin:0 0.1rem}
+ .scenic {border-radius:0.1rem;background-color:#ececec;position:relative;padding:0.2rem 0}
  .agree{font-size:0.28rem;color:#0094a3;margin-top:0.3rem;text-align:center}
 .agree a{font-size:0.28rem;color:#e0e0e0;}
+.call{text-align:center;font-size:0.36rem;color:#848484;padding:0.2rem 0}
 </style>
