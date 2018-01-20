@@ -2,11 +2,11 @@
     <div id="success" v-show="this.$store.state.ashow">
         <div id="success-layer">
             <h3 class="tip">预定成功</h3>
-            <p><span>仙女山门票</span>X<span>1</span></p>
+            <p><span>{{data.title}}</span>X<span>1</span></p>
             <p>您将在<span>2017-06-08</span>使用</p>
             <div>
                 <a href="javascript:" @click="isnshow" class="stop">暂不使用</a>
-                <a href="javascript:" @click="rshow" class="ojbk">确认</a>
+                <a href="javascript:" @click="newyuyue" class="ojbk">确认</a>
             </div>
         </div>
     </div>
@@ -23,10 +23,11 @@
 	.ojbk{background: #0094A3;color:#fff;}
 </style>
 <script>
+    import $ from 'jquery'
     export default {
         data(){
             return{
-                
+                data:''
             }
         },
         // mounted:function () {
@@ -34,13 +35,37 @@
         //     // console.log(this.$store.state.ashow,self.cshow)
         //     // self.cshow = 
         // },
+        mounted:function(){
+            var self = this
+            $.ajax({
+                type:"post",
+                url:"http://10.40.153.145:8888/ticket/getTicketById",
+                data:{
+                    id:this.$store.state.goodsid
+                },
+                success:function(data){
+                    self.data=data
+                }
+            })
+        },
         methods:{
             isnshow(){
                 this.$store.state.ashow=false
             },
-            rshow(){
+            newyuyue(){
                 this.$store.state.ashow=false
                 this.$store.state.bshow=true
+                $.ajax({
+                    url:"http://10.40.153.145:8888/app/addApp",
+                    type:"post",
+                    data:{
+                        userid:this.$store.state.loginid,
+                        ticketid:this.$store.state.goodsid
+                    },
+                    success(data){
+                        console.log(data)
+                    }
+                })
             }
         }
     }

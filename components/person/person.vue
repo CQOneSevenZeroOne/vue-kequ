@@ -5,13 +5,16 @@
 			<h1>用户中心</h1>
 			<a href="##" @click="show"><img src="../../image/more.png"/></a>
 		</div>
-		<div id="login">
+		<div id="login" v-show="!dshow">
 			<div id="head">
 				<a href="#/change"><img src="../../image/head.png"/></a>
 			</div>
 			<a href="#/login/quicklogin#" class="login" >登录</a>
 			<a href="#/regest/personal" class="regester">注册</a>
 		</div>
+		<!-- <plogin v-show="!dshow"></plogin> -->
+		<umain v-show="dshow"></umain>
+		<div id="change"></div>
 		<div class="fen"></div>
 		<div id="gift">
 			<h6>我的礼物</h6>
@@ -58,12 +61,14 @@
 	// import change from "./change.vue";
 	import $ from 'jquery'
 	import moment from 'moment'
-	
+	// import plogin from './p-login.vue'
+	import umain from '../usercenter/u_main.vue'
 	export default {
 		data(){
 			return {
 				data:'',
-				 isshow:false
+				 isshow:false,
+				 dshow:false
 			}
 		},
 		filters: {
@@ -81,8 +86,14 @@
            },
           
 		},
+		components:{
+			umain,
+		},
 		mounted:function(){
 			var self = this
+			if(this.$store.state.loginid!=""){
+				self.dshow=true
+			}
 			$.ajax({
 				url:"http://10.40.153.145:8888/app/getAllAppById",
 				type:"post",
@@ -90,7 +101,6 @@
 					userid:"1"
 				},
 				success:function(data){
-					console.log(data)
 					self.data=data
 				}
 			})

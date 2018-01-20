@@ -7,11 +7,11 @@
                 <img src="../../image/picture.png" alt=""><span>1/3</span>
             </div>
             <ul id="swiper">
-                <li><img src="../../image/list1.jpg" alt=""></li>
+                <li><img :src="data.img"></li>
             </ul>
         </div>
         <div id="title">
-            <h1>重庆游乐园</h1>
+            <h1>{{data.title}}</h1>
             <span>哀伤的萨达所</span>
             <span>奥术大师大</span>
         </div>
@@ -58,12 +58,13 @@
 <script type="text/javascript">
 	import roadtime from "./roadtime.vue";
     import success from "./success.vue";
+    import $ from 'jquery'
 	export default {
-        // data(){
-        //     return{
-        //         // ashow:false
-        //     }
-        // },
+        data(){
+            return{
+                data:''
+            }
+        },
         methods:{
             aisshow:function(){
                 this.$store.state.ashow=true
@@ -71,6 +72,19 @@
             breakpre(){
              window.history.go(-1)
             }
+        },
+        mounted:function(){
+            var self = this
+            $.ajax({
+                type:"post",
+                url:"http://10.40.153.145:8888/ticket/getTicketById",
+                data:{
+                    id:this.$store.state.goodsid
+                },
+                success:function(data){
+                    self.data=data
+                }
+            })
         },
 	    components:{
             roadtime,

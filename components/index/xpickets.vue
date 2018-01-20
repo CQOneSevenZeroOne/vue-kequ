@@ -3,7 +3,7 @@
       <ul>
          <li v-for ="picket in picketslist"> 
              <div class="list-left">
-                 <a href="#/collection">
+                 <a href="#/collection" @click="goodsid(picket.id)">
                  	<div class="listpic">
                      <img :src="picket.img">
                      </div>
@@ -58,6 +58,7 @@ import $ from "jquery";
       url:"http://10.40.153.145:8888/ticket/getAllTickets",
       type:'post',
        success:function(data){
+         console.log(data)
        self.picketslist =data
        }
     })
@@ -66,8 +67,10 @@ import $ from "jquery";
       collect(id){
         this.collectColor = true;
         this.index.push(id)
-        
-
+      },
+      goodsid(id){
+        this.$store.state.goodsid=id
+        console.log(id)
       }
     }
     }
