@@ -1,67 +1,32 @@
 <template>
-<div id="list">
+  <div id="list">
       <ul>
-         <li> 
+         <li v-for ="picket in picketslist"> 
              <div class="list-left">
-                 <a href="#">
-                 	<div class="listpic">
-                     <img src="../../../image/list2.jpg">
+                 <a href="#/collection">
+                  <div class="listpic">
+                     <img :src="picket.img">
                      </div>
                     <div class="intruct">
-                       <h4>成都游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>重庆</span>
+                       <h4 v-text="picket.title">重庆游乐园</h4>
+                       <p >已售<i v-text="picket.salenum">42424</i>份</p>
+                       <span v-text="picket.address">重庆</span>
                     </div>
                  </a>
              </div>
              <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#">收藏</a>
+                <span><i>¥</i><b v-text="picket.price">50</b></span>
+                <a href="#" @click="collect(picket.id)" :class="{collected:index.indexOf(picket.id)!=-1}">收藏</a>
              </div>
          </li>
-         <li> 
-             <div class="list-left">
-                 <a href="#">
-                 	<div class="listpic">
-                     <img src="../../../image/list2.jpg">
-                     </div>
-                    <div class="intruct">
-                       <h4>成都游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>重庆</span>
-                    </div>
-                 </a>
-             </div>
-             <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#">收藏</a>
-             </div>
-         </li>
-         <li> 
-             <div class="list-left">
-                 <a href="#">
-                 	<div class="listpic">
-                     <img src="../../../image/list2.jpg">
-                     </div>
-                    <div class="intruct">
-                       <h4>成都游乐园</h4>
-                       <p>已售<i>42424</i>份</p>
-                       <span>成都</span>
-                    </div>
-                 </a>
-             </div>
-             <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#" class="collected">已收藏</a>
-             </div>
-         </li>
+        
       </ul>
       <div class="returntop">
          <img src="../../../image/return.png">
       </div>
    </div>
 </template>
-<style>
+<style scoped>
 #list{margin:0 0.3rem;position:relative}
 #list ul li{min-height:1.9rem;border-bottom:1px solid #dadada;display:flex;justify-content: space-between;align-items:center;}
 #list .list-left a{display:flex;justify-content: space-between;align-items: center;color:#484848}
@@ -77,3 +42,36 @@
 .list-right .collected{background-color:#b6b6b6}
 .returntop{position:absolute;top:4.3rem;right:0;width:0.76rem;height:0.76rem;overflow:hidden}
 </style>
+<script>
+import $ from "jquery";
+    export default{
+      data(){
+       return{
+       collectColor:false,
+        picketslist:[],
+        index:[]
+      }
+      },
+      mounted(){
+      var self =this;
+        $.ajax({
+      url:"http://10.40.153.145:8888/ticket/getAllTickets",
+      type:'post',
+       success:function(data){
+       for(var i=0;i<data.length;i++){
+         if(data[i].type=="跟团游"){
+            self.picketslist.push(data[i]);
+         }
+       }
+       
+       }
+    })
+    },
+    methods:{
+      collect(id){
+         this.collectColor = true;
+          this.index.push(id)
+      }
+    }
+    }
+</script>
