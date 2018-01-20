@@ -1,18 +1,11 @@
 <template>
 <div class="top">
   <span>
-        <i><</i>
+        <i @click="backpre"><</i>
       <h4>注册账号</h4>
    </span>
    <div class="choose">
-     <span class="active">
-       个人
-     </span>
-     <span>
-       企业
-     </span>
-     <span>
-       景区
+     <span  v-for="list in tablist" :class="{active:list.index==aindex}" v-text="list.name" @click="changetab(list.index)">
      </span>
    </div>
  </div>
@@ -25,3 +18,43 @@
  .choose span{width:100%;height:1rem;display:block;text-align:center;}
  .choose .active{background-color:#0094a3;color:#fff;border-radius:0.1rem;margin:0 -0.05rem;z-index:3;position:relative}
 </style>
+<script>
+var url = location.href;
+var arr = url.split("#");
+ export default{
+   data(){
+   return{
+      tablist:[
+      {
+        index:0,
+        name:"个人",
+        url:"#/regest/personal"
+      },
+       {
+       index:1,
+       name:"企业",
+        url:"#/regest/enterprise"
+       },
+       {
+       index:2,
+       name:"景区",
+        url:"#/regest/scenic"
+       }],
+       aindex:0
+   }
+   },
+   methods:{
+    changetab:function(index){
+      this.aindex=index;
+      window.location.href=arr[0]+this.tablist[index].url;
+      this.$store.state.userid=this.aindex;
+    },
+    backpre:function(){
+     window.history.go(-1);
+    }
+   },
+   mounted:function(){
+      this.$store.state.userid=this.aindex;
+   }
+ }
+</script>

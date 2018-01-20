@@ -15,8 +15,8 @@
                  </a>
              </div>
              <div class="list-right">
-                <span><i>¥</i>50</span>
-                <a href="#">收藏</a>
+                <span><i>¥</i><b v-text="picket.price">50</b></span>
+                <a href="#" @click="collect(picket.id)" :class="{collected:index.indexOf(picket.id)!=-1}">收藏</a>
              </div>
          </li>
         
@@ -44,11 +44,12 @@
 </style>
 <script>
 import $ from "jquery";
-
     export default{
       data(){
        return{
-        picketslist:{}
+       collectColor:false,
+        picketslist:{},
+        index:[]
       }
       },
       mounted(){
@@ -57,11 +58,17 @@ import $ from "jquery";
       url:"http://10.40.153.145:8888/ticket/getAllTickets",
       type:'post',
        success:function(data){
-       console.log(data[0].title)
-       console.log(data.length)
        self.picketslist =data
        }
     })
+    },
+    methods:{
+      collect(id){
+        this.collectColor = true;
+        this.index.push(id)
+        
+
+      }
     }
     }
 </script>
